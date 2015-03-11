@@ -1,5 +1,5 @@
 [package]
 
-name = "game"
+name = "game_logic"
 version = "0.0.1"
 authors = ["Alex McArther <acmcarther@gmail.com>"]

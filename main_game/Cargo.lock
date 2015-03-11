@@ -1,0 +1,41 @@
+[root]
+name = "game"
+version = "0.0.1"
+dependencies = [
+ "game_logic 0.0.1",
+ "rand 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "shared_types 0.0.1",
+ "title 0.0.1",
+]
+
+[[package]]
+name = "game_logic"
+version = "0.0.1"
+
+[[package]]
+name = "libc"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "log"
+version = "0.2.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "rand"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "libc 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "log 0.2.5 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "shared_types"
+version = "0.0.1"
+
+[[package]]
+name = "title"
+version = "0.0.1"
+

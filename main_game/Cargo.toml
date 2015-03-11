@@ -1,0 +1,17 @@
+[package]
+
+name = "game"
+version = "0.0.1"
+authors = ["Alex McArther <acmcarther@gmail.com>"]
+
+[dependencies]
+rand = "0.2.0"
+
+[dependencies.title]
+path = "./../title"
+
+[dependencies.shared_types]
+path = "./../shared_types"
+
+[dependencies.game_logic]
+path = "./../game_logic"
