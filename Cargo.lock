@@ -2,9 +2,9 @@
 name = "main_game"
 version = "0.0.1"
 dependencies = [
+ "game_input 0.0.1",
  "game_logic 0.0.1",
- "main_input 0.0.1",
- "main_window 0.0.1",
+ "game_window 0.0.1",
 ]
 
 [[package]]
@@ -13,8 +13,23 @@ version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
+name = "game_input"
+version = "0.0.1"
+dependencies = [
+ "game_logic 0.0.1",
+ "game_window 0.0.1",
+]
+
+[[package]]
 name = "game_logic"
 version = "0.0.1"
+
+[[package]]
+name = "game_window"
+version = "0.0.1"
+dependencies = [
+ "glfw 0.0.6 (registry+https://github.com/rust-lang/crates.io-index)",
+]
 
 [[package]]
 name = "glfw"
@@ -42,21 +57,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 name = "log"
 version = "0.2.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-
-[[package]]
-name = "main_input"
-version = "0.0.1"
-dependencies = [
- "game_logic 0.0.1",
- "main_window 0.0.1",
-]
-
-[[package]]
-name = "main_window"
-version = "0.0.1"
-dependencies = [
- "glfw 0.0.6 (registry+https://github.com/rust-lang/crates.io-index)",
-]
 
 [[package]]
 name = "semver"

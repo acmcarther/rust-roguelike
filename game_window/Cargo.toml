@@ -1,6 +1,6 @@
 [package]
 
-name = "main_window"
+name = "game_window"
 version = "0.0.1"
 authors = ["Alex McArther <acmcarther@gmail.com>"]
 

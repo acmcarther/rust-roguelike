@@ -1,9 +1,9 @@
-extern crate main_window;
+extern crate game_window;
 extern crate game_logic;
 
 use std::iter::IteratorExt;
 use game_logic::LogicState;
-use main_window::{Action, Key, WindowEvent};
+use game_window::{Action, Key, WindowEvent};
 
 pub type InputHandler = fn(LogicState, WindowEvent) -> LogicState;
 
