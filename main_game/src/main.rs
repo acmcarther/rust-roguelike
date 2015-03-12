@@ -1,5 +1,6 @@
-extern crate title;
 extern crate game_logic;
+extern crate shared_types;
+extern crate menus;
 
 mod g_core;
 

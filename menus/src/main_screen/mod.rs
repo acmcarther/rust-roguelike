@@ -1,14 +1,8 @@
 use std::collections::HashMap;
 use std::old_io::stdin;
+use shared_types::MenuResult;
 
-#[derive(Copy)]
-pub enum ScreenResult {
-  Play,
-  Options,
-  Exit
-}
-
-pub fn launch_screen() -> ScreenResult {
+pub fn launch_screen() -> MenuResult {
   println!("launch screen");
   println!("-------------");
   println!("press p to play");
@@ -18,7 +12,7 @@ pub fn launch_screen() -> ScreenResult {
   wait_for_selection()
 }
 
-pub fn wait_for_selection() -> ScreenResult {
+pub fn wait_for_selection() -> MenuResult {
   let user_input = stdin().read_line();
 
   match user_input {
@@ -29,15 +23,15 @@ pub fn wait_for_selection() -> ScreenResult {
         None => wait_for_selection()
       }
     },
-    _ => ScreenResult::Exit
+    _ => MenuResult::Exit
   }
 }
 
-fn menu_opt_from(input: String) -> Option<ScreenResult> {
-  let option_map: HashMap<&str, ScreenResult> = vec![
-    ("p", ScreenResult::Play),
-    ("o", ScreenResult::Options),
-    ("q", ScreenResult::Exit),
+fn menu_opt_from(input: String) -> Option<MenuResult> {
+  let option_map: HashMap<&str, MenuResult> = vec![
+    ("p", MenuResult::Play),
+    ("o", MenuResult::Options),
+    ("q", MenuResult::Exit),
   ].into_iter().collect();
 
   let trimmed_input = &*(input.trim());

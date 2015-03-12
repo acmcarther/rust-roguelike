@@ -7,8 +7,8 @@ authors = ["Alex McArther <acmcarther@gmail.com>"]
 [dependencies]
 rand = "0.2.0"
 
-[dependencies.title]
-path = "./../title"
+[dependencies.menus]
+path = "./../menus"
 
 [dependencies.shared_types]
 path = "./../shared_types"

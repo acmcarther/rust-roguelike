@@ -1,5 +1,5 @@
-use title::main_screen;
-use title::main_screen::ScreenResult::{ Play, Options, Exit };
+use menus::main_screen;
+use shared_types::MenuResult::{ Play, Options, Exit };
 
 use game_logic::main_logic;
 

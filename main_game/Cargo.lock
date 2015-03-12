@@ -3,14 +3,24 @@ name = "game"
 version = "0.0.1"
 dependencies = [
  "game_logic 0.0.1",
+ "menus 0.0.1",
  "rand 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "shared_types 0.0.1",
- "title 0.0.1",
 ]
 
 [[package]]
 name = "game_logic"
 version = "0.0.1"
+dependencies = [
+ "menus 0.0.1",
+ "shared_types 0.0.1",
+ "time 0.1.19 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "gcc"
+version = "0.3.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "libc"
@@ -21,6 +31,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 name = "log"
 version = "0.2.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "menus"
+version = "0.0.1"
+dependencies = [
+ "shared_types 0.0.1",
+]
 
 [[package]]
 name = "rand"
@@ -36,6 +53,11 @@ name = "shared_types"
 version = "0.0.1"
 
 [[package]]
-name = "title"
-version = "0.0.1"
+name = "time"
+version = "0.1.19"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "gcc 0.3.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "libc 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
+]
 
