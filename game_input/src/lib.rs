@@ -8,14 +8,15 @@ use game_window::{Action, Key, WindowEvent};
 pub type InputHandler = fn(LogicState, WindowEvent) -> LogicState;
 
 pub fn handle_events(logic_state: LogicState, events: Vec<WindowEvent>) -> LogicState {
-  events.iter().fold(logic_state, check_esc)
+  events.iter().fold(logic_state, check_keys)
 }
 
-fn check_esc(logic_state: LogicState, event: &WindowEvent) -> LogicState {
+fn check_keys(logic_state: LogicState, event: &WindowEvent) -> LogicState {
   match *event {
     WindowEvent::Key(Key::Escape, _, Action::Press, _) => logic_state.as_closed(),
+    WindowEvent::Key(Key::A, _, Action::Press, _) => logic_state.inc_edges(),
+    WindowEvent::Key(Key::D, _, Action::Press, _) => logic_state.dec_edges(),
     _ => logic_state
   }
 }
-
 
