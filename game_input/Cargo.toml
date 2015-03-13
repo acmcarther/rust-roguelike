@@ -1,0 +1,11 @@
+[package]
+
+name = "game_input"
+version = "0.0.1"
+authors = ["Alex McArther <acmcarther@gmail.com>"]
+
+[dependencies.game_logic]
+path = "./../game_logic"
+
+[dependencies.game_window]
+path = "./../game_window"

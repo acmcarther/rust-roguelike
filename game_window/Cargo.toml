@@ -1,8 +1,8 @@
 [package]
 
-name = "menus"
+name = "game_window"
 version = "0.0.1"
 authors = ["Alex McArther <acmcarther@gmail.com>"]
 
-[dependencies.shared_types]
-path = "./../shared_types"
+[dependencies]
+glfw = "0.0.6"
