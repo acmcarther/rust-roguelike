@@ -1,0 +1,12 @@
+language: rust
+env:
+  global:
+    - LD_LIBRARY_PATH: /usr/local/lib
+before_install:
+  - yes | sudo add-apt-repository ppa:kalakris/cmake
+  - sudo apt-get update -qq
+install:
+  # glfw3
+  - sudo apt-get install xdotool cmake libXxf86vm-dev libxinerama-dev libxinerama1 libxcursor-dev libxcursor1
+script:
+  - cargo test
