@@ -37,7 +37,7 @@ impl WindowDependencies {
 pub fn init_dependencies() -> WindowDependencies {
   let glfw = glfw::init(glfw::FAIL_ON_ERRORS)
                   .ok().expect("Failed to init GLFW.");
-  let (mut window, events) = glfw.create_window(960, 1080, "Hello, this is window", glfw::WindowMode::Windowed)
+  let (mut window, events) = glfw.create_window(300, 300, "Hello, this is window", glfw::WindowMode::Windowed)
                                  .expect("Failed to create GLFW window.");
   window.set_key_polling(true);
   window.make_current();
@@ -48,5 +48,6 @@ pub fn init_dependencies() -> WindowDependencies {
 pub fn get_events(deps: &mut WindowDependencies) -> Vec<glfw::WindowEvent> {
   deps.glfw.poll_events();
   glfw::flush_messages(&deps.events)
-       .map(|(_, event)| event ).collect()
+       .map(|(_, event)| event).collect()
+  // Handle internal window events (ex: resize)
 }

@@ -76,7 +76,7 @@ pub fn init_dependencies(window_deps: &mut WindowDependencies) -> GfxDependencie
   GfxDependencies::new(frame, device, program, renderer)
 }
 
-pub fn render(logic_state: LogicState, gfx: &mut GfxDependencies, window_deps: &mut WindowDependencies) {
+pub fn render(logic_state: &LogicState, gfx: &mut GfxDependencies, window_deps: &mut WindowDependencies) {
 
   // Future render pipeline
   //-> generate_render_data

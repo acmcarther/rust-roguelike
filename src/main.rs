@@ -3,13 +3,13 @@ extern crate game_logic;
 extern crate game_input;
 extern crate game_window;
 
-pub struct GameDependencies {
+pub struct GameDependencies<'a> {
   window_deps: game_window::WindowDependencies,
   gfx_deps: game_gfx::GfxDependencies,
-  state: game_logic::LogicState
+  state: game_logic::LogicState<'a>
 }
 
-impl GameDependencies {
+impl <'a> GameDependencies<'a> {
   pub fn new(window_deps: game_window::WindowDependencies,
              gfx_deps: game_gfx::GfxDependencies,
              state: game_logic::LogicState)
@@ -27,7 +27,7 @@ fn main() {
   run(&mut game_deps);
 }
 
-fn init() -> GameDependencies {
+fn init<'a>() -> GameDependencies<'a> {
   let mut window_deps = game_window::init_dependencies();
   let gfx_deps = game_gfx::init_dependencies(&mut window_deps);
   let state = game_logic::init_state();
@@ -36,11 +36,11 @@ fn init() -> GameDependencies {
 
 fn run(game_deps: &mut GameDependencies) {
   while game_deps.should_stay_open() {
-    game_deps.state = game_input::handle_events(
-      game_deps.state,
+    game_input::handle_events(
+      &mut game_deps.state,
       game_window::get_events(&mut game_deps.window_deps)
     );
 
-    game_gfx::render(game_deps.state, &mut game_deps.gfx_deps, &mut game_deps.window_deps)
+    game_gfx::render(&game_deps.state, &mut game_deps.gfx_deps, &mut game_deps.window_deps)
   }
 }
