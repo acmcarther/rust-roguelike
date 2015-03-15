@@ -1,24 +1,11 @@
 extern crate glfw;
+extern crate cgmath;
 
 use std::sync::mpsc::Receiver;
 
+pub use cgmath::Vector2;
 pub use glfw::{Action, Context, Key, WindowEvent};
 pub type Events = Receiver<(f64, glfw::WindowEvent)>;
-
-#[allow(dead_code)]
-pub struct DimensionsXY {
-  x: i32,
-  y: i32
-}
-
-impl DimensionsXY {
-  pub fn new(x: i32, y:i32) -> DimensionsXY {
-    DimensionsXY { x: x, y: y }
-  }
-
-  pub fn x(&self) -> i32 { self.x }
-  pub fn y(&self) -> i32 { self.y }
-}
 
 #[allow(dead_code)]
 pub struct WindowDependencies {
@@ -33,9 +20,9 @@ impl WindowDependencies {
     WindowDependencies { glfw: glfw, window: window, events: events}
   }
 
-  pub fn dimensions(&self) -> DimensionsXY {
+  pub fn dimensions(&self) -> Vector2<u16> {
     let (w, h) = self.window.get_framebuffer_size();
-    DimensionsXY::new(w, h)
+    Vector2::new(w as u16, h as u16)
   }
 
   pub fn swap_buffers(&mut self) {
