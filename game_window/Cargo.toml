@@ -6,3 +6,4 @@ authors = ["Alex McArther <acmcarther@gmail.com>"]
 
 [dependencies]
 glfw = "*"
+cgmath = "*"

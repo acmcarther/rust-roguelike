@@ -68,7 +68,7 @@ impl GfxDependencies{
 
 pub fn init_dependencies(window_deps: &mut WindowDependencies) -> GfxDependencies {
   let dimensions = window_deps.dimensions();
-  let frame = gfx::Frame::new(dimensions.x() as u16, dimensions.y() as u16);
+  let frame = gfx::Frame::new(dimensions.x, dimensions.y);
   let mut device = gfx_device_gl::GlDevice::new(|s| window_deps.window().get_proc_address(s));
   let program = device.link_program(VERTEX_SRC, FRAGMENT_SRC)
                       .ok().expect("Failed to link program");
