@@ -1,0 +1,21 @@
+[package]
+
+name = "game_gfx"
+version = "0.0.1"
+authors = ["Alex McArther <acmcarther@gmail.com>"]
+
+[dependencies.gfx_macros]
+git = "https://github.com/gfx-rs/gfx_macros"
+
+[dependencies]
+gfx = "0.2.4"
+gfx_device_gl = "0.2.2"
+cgmath = "0.0.8"
+stainless = "*"
+
+[dependencies.game_window]
+path = "./../game_window"
+
+[dependencies.game_logic]
+path = "./../game_logic"
+

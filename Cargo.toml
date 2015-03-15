@@ -12,3 +12,7 @@ path = "./game_input"
 
 [dependencies.game_window]
 path = "./game_window"
+
+[dependencies.game_gfx]
+path = "./game_gfx"
+
