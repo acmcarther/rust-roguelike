@@ -2,21 +2,29 @@ extern crate game_window;
 extern crate game_logic;
 
 use std::iter::IteratorExt;
-use game_logic::LogicState;
 use game_window::{Action, Key, WindowEvent};
+use game_logic::{World, WorldDecision, WorldTransformer};
 
-pub type InputHandler = fn(LogicState, WindowEvent) -> LogicState;
-
-pub fn handle_events(logic_state: LogicState, events: Vec<WindowEvent>) -> LogicState {
-  events.iter().fold(logic_state, check_keys)
+enum Events {
+  Close,
+  IncrEdges,
+  DecrEdges
 }
 
-fn check_keys(logic_state: LogicState, event: &WindowEvent) -> LogicState {
-  match *event {
-    WindowEvent::Key(Key::Escape, _, Action::Press, _) => logic_state.as_closed(),
-    WindowEvent::Key(Key::A, _, Action::Press, _) => logic_state.inc_edges(),
-    WindowEvent::Key(Key::D, _, Action::Press, _) => logic_state.dec_edges(),
-    _ => logic_state
+pub fn input_task(events: Vec<WindowEvent>) -> WorldTransformer {
+  |world: &World| {
+    // TODO: Prepare this to change based on state
+    let decisions = events.iter().map {
+      match *event {
+        WindowEvent::Key(Key::Escape, _, Action::Press, _) => game_logic::close_window_decision()
+        WindowEvent::Key(Key::A, _, Action::Press, _) => game_geometry::increase_edges_decision(),
+        WindowEvent::Key(Key::D, _, Action::Press, _) => game_geometry::decrease_edges_decision(),
+        WindowEvent::Key(Key::A, _, Action::Repeat, _) => game_geometry::increase_edges_decision(),
+        WindowEvent::Key(Key::D, _, Action::Repeat, _) => game_geometry::decrease_edges_decision(),
+        _ => game_logic::null_decision()  // TODO: Optimize this out?
+      }
+      decisions.fold(WorldDecision::null_decision(), WorldDecision::arbitrate)
+    };
   }
 }
 

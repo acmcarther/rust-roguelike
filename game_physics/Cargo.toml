@@ -1,7 +1,9 @@
 [package]
 
-name = "game_logic"
+name = "game_physics"
 version = "0.0.1"
 authors = ["Alex McArther <acmcarther@gmail.com>"]
 
+[dependencies]
+cgmath = "0.0.8"
 

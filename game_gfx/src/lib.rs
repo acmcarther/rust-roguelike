@@ -9,10 +9,9 @@ extern crate gfx_device_gl;
 extern crate gfx;
 
 use game_window::{Context, WindowDependencies};
-use game_logic::LogicState;
+use game_logic::{World, WorldDecision};
 
 use std::iter::IteratorExt;
-use std::iter::count;
 use std::num::Float;
 
 use gfx::traits::*;
@@ -76,7 +75,16 @@ pub fn init_dependencies(window_deps: &mut WindowDependencies) -> GfxDependencie
   GfxDependencies::new(frame, device, program, renderer)
 }
 
-pub fn render(logic_state: LogicState, gfx: &mut GfxDependencies, window_deps: &mut WindowDependencies) {
+pub fn render_task(gfx: &mut GfxDependencies, window_deps: &mut WindowDependencies) -> WorldTransformer {
+  |world: &world| {
+    game_gfx::render(&game_deps.state, &mut game_deps.gfx_deps, &mut game_deps.window_deps);
+
+    // GFX does not affect the world
+    game_logic::null_decision()
+  }
+}
+
+fn render(world: &World, gfx: &mut GfxDependencies, window_deps: &mut WindowDependencies) {
 
   // Future render pipeline
   //-> generate_render_data
@@ -91,7 +99,7 @@ pub fn render(logic_state: LogicState, gfx: &mut GfxDependencies, window_deps: &
       stencil: 0,
   };
 
-  let vertex_data = generate_vertices(logic_state.edge_count());
+  let vertex_data = generate_vertices(world.edge_count());
   let mesh = gfx.device.create_mesh(&vertex_data.as_slice());
   let slice = mesh.to_slice(gfx::PrimitiveType::TriangleFan);
   let state = gfx::DrawState::new();
@@ -111,10 +119,8 @@ pub fn render(logic_state: LogicState, gfx: &mut GfxDependencies, window_deps: &
 fn generate_vertices(edges: usize) -> Vec<Vertex> {
   let float_edges = edges as f32;
   let size = 1.0;
-  let polygon = std::iter::count(0,1)
-    .map(|idx| generate_vertex(size, (((idx as f32) - 1.0) / float_edges)))
-    .take(edges).collect();
-
+  let polygon = (0..).map(|idx| generate_vertex(size, (((idx as f32) - 1.0) / float_edges)))
+                     .take(edges).collect();
   polygon
 }
 
