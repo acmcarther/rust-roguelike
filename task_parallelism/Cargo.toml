@@ -1,0 +1,10 @@
+[package]
+name = "task_parallelism"
+version = "0.0.1"
+authors = ["Alex McArther <acmcarther@gmail.com>"]
+
+[dependencies]
+simple_parallel = "*"
+
+[dev-dependencies]
+rand = "*"

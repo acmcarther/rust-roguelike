@@ -16,3 +16,6 @@ path = "./game_window"
 [dependencies.game_gfx]
 path = "./game_gfx"
 
+[dependencies.task_parallelism]
+path = "./task_parallelism"
+
