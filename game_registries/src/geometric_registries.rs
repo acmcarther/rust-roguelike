@@ -1,31 +1,22 @@
 mod geometric_registries {
-  pub struct DynamicVertexComponent {
+  pub struct EdgesComponent {
     vertex_count: usize
   }
 
-  impl DynamicVertexComponent {
-    pub fn new(vertex_count: usize) -> DynamicVertexComponent {
-      DynamicVertexComponent{ vertex_count: vertex_count }
-    }
-
-    // TODO: Move this into game_geometry
-    pub fn inc_vertices(&mut self) {
-      self.vertex_count += 1;
-    }
-
-    pub fn dec_vertices(&mut self) {
-      if self.edge_count != 0usize {
-        self.edge_count -= 1;
-      }
-    }
-
-    pub fn vertex_count(&self) -> usize {
-      self.vertex_count
+  impl EdgesComponent {
+    pub fn new(vertex_count: usize) -> EdgesComponent {
+      EdgesComponent { vertex_count: vertex_count }
     }
   }
 
   pub struct ShapeComponent {
-    shape: ShapeType
+    pub shape: ShapeType
+  }
+
+  impl ShapeComponent {
+    pub fn new(shape: ShapeType) -> ShapeComponent {
+      ShapeComponent { shape: shape }
+    }
   }
 
   pub enum ShapeType {
@@ -33,8 +24,13 @@ mod geometric_registries {
     NGon2D,
     NGon3D,
   }
+}
 
-  pub struct MeshComponent {
-    something: i32
+pub trait GeometryInterface {
+  fn find_edge_component_for(&self, entity_id: usize)
+    -> Option<&mut EdgesComponent>;
+
+  fn find_shape_component_for(&self, entity_id: usize);
+    -> Option<&mut ShapeComponent>;
   }
 }

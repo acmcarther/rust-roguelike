@@ -3,7 +3,7 @@ extern crate task_parallelism;
 extern crate test;
 
 use self::test::Bencher;
-use task_parallelism::TaskMaster;
+use task_parallelism::{TaskMaster, TaskMultiplexer};
 
 #[bench]
 fn pool_spawning_2(bench: &mut Bencher) {

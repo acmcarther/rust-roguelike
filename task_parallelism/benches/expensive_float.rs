@@ -8,7 +8,7 @@ use self::rand::thread_rng;
 use self::rand::distributions::{IndependentSample, Range};
 use self::test::Bencher;
 
-use task_parallelism::TaskMaster;
+use task_parallelism::{TaskMaster, TaskMultiplexer};
 use std::iter::{IteratorExt};
 use std::sync::Arc;
 

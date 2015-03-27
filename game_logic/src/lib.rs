@@ -8,6 +8,7 @@ use std::collections::BitSet;
 use std::collections::HashMap;
 use std::iter::FromIterator;
 use core::iter::IntoIterator;
+use game_registries::geometric_registries;
 
 // TODO: Make this more complicated
 pub type WorldTransformer = Task<&World, WorldDecision>;

@@ -1,11 +1,7 @@
 extern crate game_window;
 extern crate game_logic;
 
-<<<<<<< Updated upstream
 use std::iter::IteratorExt;
-use game_logic::LogicState;
-=======
->>>>>>> Stashed changes
 use game_window::{Action, Key, WindowEvent};
 use game_logic::{World, WorldDecision, WorldTransformer};
 
